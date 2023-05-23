@@ -1,0 +1,75 @@
+# name-template: 'v$RESOLVED_VERSION: Dot-Com Release'
+  # name template disabled since 'name' in the workflow file is auto-populated
+tag-template: '$RESOLVED_VERSION'
+version-template: '$MAJOR.$MINOR.$PATCH'
+sort-by: 'merged_at'
+sort-direction: 'ascending'
+category-template: '**$TITLE**'
+categories:
+  - title: 'Architecture'
+    label: 'Architecture'
+  - title: 'Audit & Accounting'
+    label: 'Audit & Accounting'
+  - title: 'Claims Team'
+    label: 'Claims Team'
+  - title: 'Customer Acquisition & Retention'
+    label: 'Customer Acquisition & Retention'
+  - title: 'Customer & UW Support'
+    labels: 'Customer & UW Support'
+  - title: 'Data Engineering'
+    labels: 'Data Engineering'
+  - title: 'DevOps'
+    label: 'DevOps'
+  - title: 'Documents & Forms'
+    labels: 'Documents & Forms'
+  - title: 'Expansion'
+    label: 'Expansion'
+  - title: 'Ratings'
+    label: 'Ratings'
+  - title: 'Prod Support'
+    labels:
+      - 'Prod Support'
+      - 'production support'
+  - title: 'Release Management'
+    label: 'Release Management'
+  - title: 'Security'
+    label: 'Security'
+  - title: 'Systems Engineering'
+    label: 'Systems Engineering'
+change-template:  '* $TITLE #$NUMBER'
+change-title-escapes: '\<*_&[]' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+#autolabeler:
+#  - label: 'chore'
+#    files:
+#      - '.env/*'
+#    branch:
+#      - '/docs{0,1}\/.+/'
+#  - label: 'bug'
+#    branch:
+#      - '/fix\/.+/'
+#    title:
+#      - '/fix/i'
+#  - label: 'TESTING'
+#    branch:
+#      - '/feature\/.+/'
+#    body:
+#      - 'testing'    
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+      - 'migrate'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: |
+  --
+  
+  $CHANGES
+  
+  --
+footer: "_Full Changelog:_ [_`$PREVIOUS_TAG...$RESOLVED_VERSION`_](https://github.com/kin/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION)"
