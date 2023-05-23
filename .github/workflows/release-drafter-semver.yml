@@ -7,7 +7,7 @@ on:
         required: true
         type: string
     secrets:
-      token:
+      CROSS_REPO_TOKEN:
         required: true
   workflow_dispatch:
   push:
