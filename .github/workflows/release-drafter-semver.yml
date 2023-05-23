@@ -1,0 +1,44 @@
+name: Release Drafter SemVer
+
+on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - main
+      # branches to consider in the event; optional, defaults to all
+      # main branch is used for all repos except dot-com & rater-api
+      # staging for marketing website
+  # pull_request event is required only for autolabeler
+  # pull_request:
+    # Only following types are handled by the action, but one can default to all as well
+    # types: [opened, reopened, synchronize]
+  # pull_request_target event is required for autolabeler to support PRs from forks
+#  pull_request:
+#    types: [opened, synchronize, closed]
+jobs:
+  update-release-draft:
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      # write permission is required for autolabeler
+      # otherwise, read permission is required at least
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Update Release Draft
+      uses: release-drafter/release-drafter@v5.21.1
+      with:
+        config-name: release-drafter.yml
+        name: ${{ github.event.repository.name }}
+        disable-autolabeler: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
