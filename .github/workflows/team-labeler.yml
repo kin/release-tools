@@ -28,5 +28,5 @@ jobs:
       with:
         repo-token: ${{ secrets.CROSS_REPO_TOKEN }}
         configuration-path: .github/teams.yml
-        teams-repo: teams
+        teams-repo: release-tools
         teams-branch: main
