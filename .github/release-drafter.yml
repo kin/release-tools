@@ -72,4 +72,4 @@ template: |
   $CHANGES
   
   --
-footer: "_Full Changelog:_ [_$PREVIOUS_TAG...$RESOLVED_VERSION_](https://github.com/kin/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION)"
+footer: "_Full Changelog:_ _[$PREVIOUS_TAG...$RESOLVED_VERSION](https://github.com/kin/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION)_"
