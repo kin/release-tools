@@ -6,6 +6,9 @@ on:
       config-path:
         required: true
         type: string
+      disable-autolabeler:
+        required: true 
+        type: boolean
     secrets:
       CROSS_REPO_TOKEN:
         required: true
