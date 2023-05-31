@@ -27,14 +27,15 @@ on:
   # pull_request_target event is required for autolabeler to support PRs from forks
 #  pull_request:
 #    types: [opened, synchronize, closed]
-jobs:
-  update-release-draft:
-    permissions:
+permissions:
       # write permission is required to create a github release
-      contents: write
+  contents: write
       # write permission is required for autolabeler
       # otherwise, read permission is required at least
-      pull-requests: write
+  pull-requests: write
+jobs:
+  update-release-draft:
+
     runs-on: ubuntu-latest
     steps:
     - name: Update Release Draft
